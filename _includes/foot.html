@@ -1,0 +1,38 @@
+<script src="/javascripts/system-polyfills.js"></script> <!-- tmp -->
+<script src="/javascripts/system.js"></script> <!-- tmp until ModuleLoader/es6-module-loader#481 is resolved -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+<script src="https://cdn.jsdelivr.net/react/0.14.7/react-dom.js"></script>
+
+{% if page.custom_js %}
+  <script>
+    System.config({
+      baseURL: './',
+      transpiler: 'Babel',
+      babelOptions: {
+        plugins: ["transform-es2015-modules-systemjs"],
+        presets: ['es2015', 'react']
+      },
+      map: {
+        Babel: '/javascripts/babel-standalone.js' // Todo: give an external Babel
+      }
+    });
+
+    var Babel;
+    const promises = [System.import('Babel').then(dep => Babel = dep)];
+    {% for js_file in page.custom_js %}
+      var {{ js_file }};
+      promises.push(System.import('/javascripts/{{ js_file }}.js').then(e => {{ js_file }} = e.default));
+    {% endfor %}
+
+    const deps = Promise.all(promises);
+    deps.then((deps) => {
+      var codeElements = document.querySelectorAll('script[type=jsx]');
+      Array.forEach(codeElements, (element) => {
+        var code = eval(Babel.transform(element.textContent, { presets: ['es2015', 'react'] }).code);
+        var newElement = document.createElement("div");
+        element.parentNode.replaceChild(newElement, element);
+        ReactDOM.render(code, newElement);
+      });
+    });
+  </script>
+{% endif %}

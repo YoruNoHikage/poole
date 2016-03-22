@@ -4,7 +4,7 @@ permalink:           pretty
 # Setup
 title:               Poole
 tagline:             The Jekyll Butler
-url:                 http://getpoole.com
+url:                 http://poole.yorunohikage.fr
 paginate:            1
 baseurl:             ""
 
@@ -24,9 +24,13 @@ author:
 # Custom vars
 version:             2.0.0
 github:
-  repo:              https://github.com/poole/poole
+  repo:              https://github.com/YoruNoHikage/poole
 
 # Gems
 gems:
   - jekyll-paginate
   - jekyll-gist
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
