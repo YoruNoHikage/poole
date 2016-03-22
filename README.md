@@ -1,4 +1,9 @@
-# Poole
+# Poole with inline React Components
+
+_More on the fork here:_ http://poole.yorunohikage.fr/2016/01/04/introducing-react-components/
+_Blog post here:_ https://blog.yorunohikage.fr/2016/03/22/inserting-react-components-inside-your-jekyll-markdown-posts/
+
+![jekyll-react](https://cloud.githubusercontent.com/assets/969003/13968857/5aa8774c-f07f-11e5-8315-3a300a5be672.png)
 
 *The Strange Case of Dr. Jekyll and Mr. Hyde* tells the story of a lawyer investigating the connection of two persons, Dr. Henry Jekyll and Mr. Edward Hyde. Chief among the novel's supporting cast is a man by the name of Mr. Poole, Dr. Jekyll's loyal butler.
 
